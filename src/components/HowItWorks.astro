@@ -1,0 +1,45 @@
+
+<section class="how-it-works" id="how">
+  <div class="container">
+    <h2 class="section-title">Booking Is Simple</h2>
+    <p class="section-sub">Three steps between now and a party everyone talks about.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Tell Us About Your Event</h3>
+        <p>Fill out a quick form — event type, date, and location.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We Confirm the Details</h3>
+        <p>We'll call or email you back to lock in your package and answer questions.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>We Show Up & Set Up</h3>
+        <p>Our attendant arrives early, sets up, and handles everything start to finish.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how-it-works { padding: 100px 0; background: var(--cream); }
+  .steps {
+    display: flex; gap: 40px; margin-top: 56px;
+  }
+  .step { flex: 1; text-align: center; }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--gold); color: var(--cream);
+    font-size: 1.4rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .step h3 { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+  .step p { color: var(--slate); font-size: 0.92rem; max-width: 280px; margin: 0 auto; }
+
+  @media (max-width: 768px) {
+    .steps { flex-direction: column; gap: 32px; }
+  }
+</style>

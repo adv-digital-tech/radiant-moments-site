@@ -1,0 +1,108 @@
+<section class="hero">
+  <div class="hero-bg" />
+  <div class="hero-overlay" />
+  <div class="container">
+    <div class="hero-badge">Serving Orange & Rockland County</div>
+    <h1>Capture the Moments. <span>Keep the Memories</span></h1>
+    <p class="hero-sub">Photo booths for your biggest days — from birthdays to weddings, graduations to corporate events. We bring the fun straight to you.</p>
+    <p class="hero-price">Full-service package starting at <strong>$550</strong></p>
+    <div class="hero-buttons">
+      <a href="#cta" class="btn-primary">Get a Free Quote</a>
+    </div>
+    <p class="hero-footnote">No pressure. Just a fast, friendly quote.</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 120px 0 140px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1400&h=900&fit=crop');
+    background-size: cover;
+    background-position: center 30%;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(27,24,21,0.85) 0%,
+      rgba(27,24,21,0.5) 50%,
+      rgba(27,24,21,0.85) 100%
+    );
+    z-index: 1;
+  }
+  .hero > .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(4px);
+    color: var(--cream);
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .hero h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    max-width: 720px;
+    margin: 0 auto 16px;
+    color: var(--cream);
+  }
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--gold), #e0b84c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.8);
+    max-width: 600px;
+    margin: 0 auto 12px;
+  }
+  .hero-price {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 28px;
+  }
+  .hero-price strong { color: var(--gold); font-weight: 700; }
+  .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .hero-footnote {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    margin-top: 16px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--gold); color: var(--ink);
+    padding: 14px 36px; border-radius: 10px;
+    font-weight: 700; font-size: 1.05rem;
+    transition: background .2s, transform .2s;
+    border: none; cursor: pointer;
+  }
+  .btn-primary:hover { background: #b8921e; transform: translateY(-2px); }
+
+  @media (max-width: 768px) {
+    .hero { padding: 80px 0 100px; min-height: auto; }
+    .hero h1 { font-size: 2.2rem; }
+    .hero-bg { background-position: center 20%; }
+  }
+</style>

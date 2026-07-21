@@ -1,0 +1,41 @@
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">Loved by Parents, Couples & Planners Alike</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+        <p class="testimonial-text">"The highlight of our wedding reception. The booth was sleek, took up barely any space, and our guests loved getting their photos sent right to their phones."</p>
+        <p class="testimonial-author">— Sarah & Mark, Married in June</p>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+        <p class="testimonial-text">"Best $550 I've spent on my daughter's graduation party. It kept the teens entertained for hours, and we got a full digital album of the memories."</p>
+        <p class="testimonial-author">— Karen T., Proud Parent</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials { padding: 100px 0; background: var(--cream); }
+  .testimonials-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px;
+    margin-top: 56px;
+  }
+  .testimonial-card {
+    background: var(--sand); border-radius: 16px; padding: 36px 32px;
+    border: 1px solid #e8e4df;
+  }
+  .stars { font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .testimonial-text {
+    font-size: 1rem; color: var(--ink); line-height: 1.7;
+    font-style: italic; margin-bottom: 16px;
+  }
+  .testimonial-author {
+    font-size: 0.9rem; color: var(--slate); font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+</style>

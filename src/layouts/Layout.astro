@@ -1,23 +1,49 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Photobooth — Photo Booth Rentals Orange & Rockland County</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  :root {
+    --ink: #1B1815;
+    --gold: #C9A227;
+    --cream: #FFFFFF;
+    --sand: #F5F3F0;
+    --slate: #4A4A4A;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--slate);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .section-label {
+    text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem;
+    font-weight: 700; color: var(--gold); margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--slate); max-width: 520px; font-size: 1.05rem;
+  }
 </style>

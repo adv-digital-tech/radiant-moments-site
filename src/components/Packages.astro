@@ -1,0 +1,78 @@
+
+<section class="packages" id="pricing">
+  <div class="container">
+    <h2 class="section-title">One Package. Everything Included.</h2>
+    <div class="package-card">
+      <div class="package-badge">Full-service</div>
+      <h3>Primary Package</h3>
+      <div class="package-price">$550</div>
+      <ul class="package-features">
+        <li>4 Hours of Unlimited Sessions — Take as many photos as your guests want, all event long.</li>
+        <li>Event-Themed Props — Fun props matched to your party.</li>
+        <li>3 Themed Photo Templates — Custom-designed prints for your session.</li>
+        <li>On-Site Attendant — A friendly pro runs the booth from setup to breakdown.</li>
+        <li>Full Digital Gallery — Every photo delivered digitally after the event.</li>
+        <li>Setup & Breakdown Included — We handle it all, you don't lift a finger.</li>
+      </ul>
+      <div class="package-btn">
+      <a href="#cta" class="btn-primary">Check Availablity</a>
+      </div>
+    </div>
+    <p class="addons-note">Want more? Ask about extra hours, raw photo copies, custom branding, custom prop packages, or a stand-alone power source for outdoor events.</p>
+  </div>
+</section>
+
+<style>
+  .packages { padding: 100px 0; background: var(--sand); }
+  .package-card {
+    max-width: 640px; margin: 56px auto 0;
+    background: var(--cream); border-radius: 16px; padding: 48px 40px;
+    border: 2px solid var(--gold); text-align: center;
+    box-shadow: 0 12px 40px rgba(201, 162, 39, 0.1);
+  }
+  .package-badge {
+    display: inline-block;
+    background: var(--gold); color: var(--cream);
+    padding: 4px 14px; border-radius: 100px;
+    font-size: 0.75rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 16px;
+  }
+  .package-card h3 {
+    font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+  }
+  .package-price {
+    font-size: 3rem; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--ink); margin: 16px 0 24px;
+  }
+  .package-features {
+    list-style: none; text-align: left; margin: 0 auto;
+    max-width: 480px;
+  }
+  .package-features li {
+    padding: 10px 0; font-size: 0.92rem; color: var(--slate);
+    display: flex; align-items: flex-start; gap: 10px;
+    border-bottom: 1px solid var(--sand);
+  }
+  .package-features li:last-child { border-bottom: none; }
+  .package-features li::before {
+    content: "✓"; color: var(--gold); font-weight: 700; font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .addons-note {
+    text-align: center; color: var(--slate); font-size: 0.9rem;
+    max-width: 560px; margin: 32px auto 0; opacity: 0.85;
+  }
+  .package-btn {
+    width: 100%; padding: 16px; margin-top: 8px;
+    background: var(--gold); color: var(--cream);
+    border: none; border-radius: 10px;
+    font-size: 1.1rem; font-weight: 700; font-family: inherit;
+    cursor: pointer; transition: background .2s, transform .2s;
+  }
+  .package-btn:hover { background: #b8921e; transform: translateY(-2px); }
+
+  @media (max-width: 768px) {
+    .package-card { padding: 32px 24px; }
+  }
+</style>
