@@ -50,11 +50,18 @@
   </div>
 </section>
 
+<script>
+  const today = new Date();
+  document.getElementById('date').min = today.toISOString().split('T')[0];
+  const twoYearsOut = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
+  document.getElementById('date').max = twoYearsOut.toISOString().split('T')[0];
+</script>
+
 <style>
   .cta {
     padding: 100px 0;
     text-align: center;
-    background: linear-gradient(135deg, var(--ink), #2a2725);
+    background: radial-gradient(ellipse at center, var(--gold), #8c6a12);
     color: var(--cream);
   }
   .cta-title {
@@ -92,12 +99,12 @@
   .form-group select option { color: var(--ink); }
   .btn-submit {
     width: 100%; padding: 16px; margin-top: 8px;
-    background: var(--gold); color: var(--cream);
+    background: var(--ink); color: var(--cream);
     border: none; border-radius: 10px;
     font-size: 1.1rem; font-weight: 700; font-family: inherit;
     cursor: pointer; transition: background .2s, transform .2s;
   }
-  .btn-submit:hover { background: #b8921e; transform: translateY(-2px); }
+  .btn-submit:hover { background: #000; transform: translateY(-2px); }
   .form-footnote {
     font-size: 0.85rem; opacity: .6; margin-top: 16px; text-align: center;
   }
@@ -105,5 +112,13 @@
   @media (max-width: 768px) {
     .cta-title { font-size: 2rem; }
     .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+
+<style is:global>
+  .form-group input[type="date"] { color-scheme: dark; }
+  .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
   }
 </style>
