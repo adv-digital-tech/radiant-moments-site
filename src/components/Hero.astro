@@ -4,7 +4,7 @@ import galleryImg from '../assets/gallery-1.png';
 
 
 <section class="hero">
-  <div class="hero-bg" />
+  <div class="hero-bg" style={`background-image: url(${galleryImg.src});`} />
   <div class="hero-overlay" />
   <div class="container">
     <div class="hero-badge">Serving Orange & Rockland County</div>
@@ -30,7 +30,6 @@ import galleryImg from '../assets/gallery-1.png';
   }
   .hero-bg {
     position: absolute; inset: 0;
-    background-image: url(${galleryImg});
     background-size: cover;
     background-position: center 30%;
     z-index: 0;
