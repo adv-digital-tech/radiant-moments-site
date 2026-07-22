@@ -1,7 +1,11 @@
+---
+import logo from '../assets/radiant-moment-logo.png';
+---
+
 <header>
   <div class="header-inner">
     <a href="#" class="header-logo">
-      <img src="/favicon.svg" alt="" class="header-icon" />
+      <img src={logo.src} alt="" class="header-icon" />
       <span class="header-brand"><span class="brand-gold">Radiant</span><span class="brand-ink">Moments</span></span>
     </a>
     <a href="#cta" class="header-cta">Check Availability</a>
@@ -21,7 +25,7 @@
   .header-inner {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 14px 24px;
+    padding: 10px 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,16 +33,18 @@
   .header-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 4px;
     color: var(--ink);
     font-weight: 700;
     font-size: 1.1rem;
     text-decoration: none;
   }
   .header-icon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     display: block;
+    -webkit-mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
+    mask-image: radial-gradient(circle at center, black 50%, transparent 100%);
   }
   .header-brand { font-size: 1.2rem; font-weight: 700; font-family: 'Cormorant Garamond', serif; }
   .brand-gold { color: var(--gold); }
