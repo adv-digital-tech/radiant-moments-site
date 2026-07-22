@@ -1,4 +1,3 @@
-
 <section class="cta" id="cta">
   <div class="container">
     <h2 class="cta-title">Ready to Book Your Date?</h2>
@@ -91,6 +90,12 @@
     font-size: 1rem; font-family: inherit;
     transition: background .2s, border-color .2s;
   }
+
+  /* Fix for the Date Picker Icon */
+  .form-group input[type="date"] {
+    color-scheme: dark;
+  }
+
   .form-group input:focus,
   .form-group select:focus {
     outline: none; background: rgba(255,255,255,.14);
@@ -112,13 +117,5 @@
   @media (max-width: 768px) {
     .cta-title { font-size: 2rem; }
     .form-row { grid-template-columns: 1fr; }
-  }
-</style>
-
-<style is:global>
-  .form-group input[type="date"] { color-scheme: dark; }
-  .form-group input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    cursor: pointer;
   }
 </style>
