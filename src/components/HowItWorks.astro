@@ -1,8 +1,10 @@
 ---
 import img1 from '../assets/gallery-1.png';
 import img2 from '../assets/gallery-2.png';
-import img3 from '../assets/gallery-5.jpg';
-import img4 from '../assets/gallery-6.jpg';
+import img3 from '../assets/gallery-3.png';
+import img4 from '../assets/gallery-4.png';
+import img5 from '../assets/gallery-5.jpg';
+import img6 from '../assets/gallery-6.jpg';
 const images = [
   { src: img1.src, w: 44, h: 52, top: 2, left: -2, rotate: -4, radius: 28 },
   { src: img2.src, w: 38, h: 46, top: 4, left: 46, rotate: 5, radius: 24 },
@@ -10,8 +12,8 @@ const images = [
   { src: img4.src, w: 36, h: 44, top: 48, left: 56, rotate: 4, radius: 26 },
   { src: img1.src, w: 30, h: 38, top: 30, left: 28, rotate: 3, radius: 22 },
   { src: img2.src, w: 28, h: 36, top: -4, left: 82, rotate: -5, radius: 25 },
-  { src: img3.src, w: 34, h: 30, top: 70, left: 38, rotate: -3, radius: 28 },
-  { src: img4.src, w: 26, h: 34, top: 38, left: 70, rotate: 6, radius: 20 },
+  { src: img5.src, w: 34, h: 30, top: 70, left: 38, rotate: -3, radius: 28 },
+  { src: img6.src, w: 26, h: 34, top: 38, left: 70, rotate: 6, radius: 20 },
 ];
 ---
 
@@ -60,6 +62,8 @@ const images = [
     position: relative;
     overflow: hidden;
     background: var(--cream);
+    background-size: cover;
+    background-position: center;
     min-height: 600px;
   }
   .how-collage {
@@ -82,9 +86,16 @@ const images = [
   }
   .how-it-works > .container { position: relative; z-index: 2; }
   .steps {
-    display: flex; gap: 40px; margin-top: 56px;
+    display: flex; gap: 24px; margin-top: 56px;
   }
-  .step { flex: 1; text-align: center; }
+  .step { flex: 1; text-align: center; 
+    background: var(--sand);
+    border: 1px solid #e8e4df;
+    border-radius: 16px;
+    padding: 36px 28px;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .step:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
   .step-num {
     width: 56px; height: 56px; border-radius: 50%;
     background: var(--gold); color: var(--cream);
@@ -93,10 +104,10 @@ const images = [
     margin: 0 auto 20px;
   }
   .step h3 { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-  .step p { color: var(--slate); font-size: 0.92rem; max-width: 280px; margin: 0 auto; }
+  .step p { color: var(--slate); font-size: 0.92rem; line-height: 1.6; }
 
   @media (max-width: 768px) {
-    .steps { flex-direction: column; gap: 32px; }
+    .steps { flex-direction: column; gap: 24px; }
     .how-cell { display: none; }
   }
 </style>
