@@ -50,10 +50,14 @@
 </section>
 
 <script>
-  const today = new Date();
-  document.getElementById('date').min = today.toISOString().split('T')[0];
-  const twoYearsOut = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
-  document.getElementById('date').max = twoYearsOut.toISOString().split('T')[0];
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('date');
+    if (!el) return;
+    const today = new Date();
+    el.min = today.toISOString().split('T')[0];
+    const maxDate = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
+    el.max = maxDate.toISOString().split('T')[0];
+  });
 </script>
 
 <style>
