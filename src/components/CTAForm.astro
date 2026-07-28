@@ -50,16 +50,90 @@
       <p class="form-footnote">We'll follow up by email within 48 hours.</p>
     </form>
   </div>
+
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M16 24l6 6 10-10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="modal-title">One step closer to picture-perfect memories!</h3>
+      <p class="modal-text">We've got your request! Our team is checking the calendar to make sure we can bring the booth to your big day.</p>
+      <p class="modal-text">We'll be in touch within 48hrs.</p>
+      <button class="modal-btn" id="modal-btn">Got it!</button>
+    </div>
+  </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const el = document.getElementById('date');
-    if (!el) return;
-    const today = new Date();
-    el.min = today.toISOString().split('T')[0];
-    const maxDate = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
-    el.max = maxDate.toISOString().split('T')[0];
+    const dateEl = document.getElementById('date');
+    if (dateEl) {
+      const today = new Date();
+      dateEl.min = today.toISOString().split('T')[0];
+      const maxDate = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
+      dateEl.max = maxDate.toISOString().split('T')[0];
+    }
+
+    const form = document.querySelector('.cta-form');
+    const modal = document.getElementById('success-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const gotItBtn = document.getElementById('modal-btn');
+    const submitBtn = form?.querySelector('.btn-submit');
+
+    function closeModal() {
+      modal?.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    gotItBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!(e.target instanceof HTMLFormElement)) return;
+
+      const originalText = submitBtn?.textContent;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+
+      try {
+        const data = new FormData(e.target);
+        data.set('_captcha', 'false');
+
+        const res = await fetch(e.target.action, {
+          method: 'POST',
+          body: data,
+        });
+
+        if (!res.ok && res.type !== 'opaqueredirect') {
+          throw new Error('Submission failed');
+        }
+
+        e.target.reset();
+        modal?.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      } catch {
+        alert('Something went wrong. Please try again or email us directly.');
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
+    });
   });
 </script>
 
@@ -129,8 +203,76 @@
     font-size: 0.85rem; opacity: .6; margin-top: 16px; text-align: center;
   }
 
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(27,24,21,.7);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .35s ease;
+  }
+  .modal-overlay.open {
+    opacity: 1; pointer-events: auto;
+  }
+  .modal-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 48px 40px 40px;
+    max-width: 440px; width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+    transform: translateY(20px);
+    transition: transform .35s ease;
+  }
+  .modal-overlay.open .modal-card {
+    transform: translateY(0);
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none;
+    font-size: 1.8rem; line-height: 1;
+    color: var(--slate); cursor: pointer;
+    opacity: .5; transition: opacity .2s;
+    font-family: inherit;
+  }
+  .modal-close:hover { opacity: 1; }
+  .modal-icon {
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .modal-title {
+    font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .modal-text {
+    font-size: 0.95rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .modal-btn {
+    margin-top: 20px;
+    padding: 12px 36px;
+    background: var(--gold);
+    color: var(--cream);
+    border: none; border-radius: 10px;
+    font-size: 1rem; font-weight: 700; font-family: inherit;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .modal-btn:hover {
+    background: #b8911f;
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 768px) {
     .cta-title { font-size: 2rem; }
     .form-row { grid-template-columns: 1fr; }
+    .modal-card { padding: 40px 24px 32px; }
   }
 </style>
