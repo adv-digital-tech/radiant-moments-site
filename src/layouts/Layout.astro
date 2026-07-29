@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import galleryImg from '../assets/gallery-1.png';
 ---
 
 <!doctype html>
@@ -10,11 +11,29 @@ import Header from '../components/Header.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon-rm.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Radiant Moments. Photo Booth Rentals in Orange & Rockland County</title>
+    <meta name="description" content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MR2437WJ');</script>
+    <!-- End Google Tag Manager -->
+    <meta property="og:title" content="Radiant Moments Photo Booth Rentals in Orange & Rockland County" />
+    <meta property="og:description"content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
+    <meta property="og:image" content={`https://radiantmoments.nelify.app${galleryImg.src}`} />
+    <meta property="og:url" content="https://radiantmoments.nelify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <title>Radiant Moments | Photo Booth Rental in Orange & Rockland County</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
   </head>
   <body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR2437WJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     <Header />
     <slot />
   <script src="/scripts/scroll-reveal.js" is:inline></script>

@@ -125,6 +125,7 @@
         e.target.reset();
         modal?.classList.add('open');
         document.body.style.overflow = 'hidden';
+        dataLayer.push({'event': 'form_success'});
       } catch {
         alert('Something went wrong. Please try again or email us directly.');
       } finally {
