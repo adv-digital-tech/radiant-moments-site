@@ -3,13 +3,13 @@ import logo from '../assets/radiant-moment-logo.png';
 ---
 
 <header>
-  <div class="header-inner">
-    <a href="#" class="header-logo">
+  <nav class="header-inner" aria-label="Primary">
+    <a href="#top" class="header-logo">
       <img src={logo.src} alt="" class="header-icon" />
-      <span class="header-brand"><span class="brand-gold">Radiant</span><span class="brand-ink">Moments</span></span>
+      <span class="header-brand"><span class="brand-gold">Radiant </span><span class="brand-ink">Moments</span></span>
     </a>
     <a href="#cta" class="header-cta">Check Availability</a>
-  </div>
+  </nav>
 </header>
 
 <style>
@@ -29,6 +29,8 @@ import logo from '../assets/radiant-moment-logo.png';
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 8px;
   }
   .header-logo {
     display: flex;
@@ -56,11 +58,28 @@ import logo from '../assets/radiant-moment-logo.png';
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     transition: background .2s, transform .2s;
     text-decoration: none;
   }
   .header-cta:hover {
     background: #000;
     transform: translateY(-1px);
+  }
+
+  @media (max-width: 480px) {
+    .header-inner {
+      padding: 8px 16px;
+      row-gap: 8px;
+    }
+    .header-brand { font-size: 1.05rem; }
+    .header-icon { width: 30px; height: 30px; }
+    .header-cta {
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      min-height: 40px;
+    }
   }
 </style>

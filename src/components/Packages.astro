@@ -1,7 +1,7 @@
 
-<section class="packages" id="pricing">
+<section class="packages" id="pricing" aria-labelledby="pricing-title">
   <div class="container">
-    <h2 class="section-title reveal">One Package. <span>everything included.</span></h2>
+    <h2 class="section-title reveal" id="pricing-title">One Package. <span>everything included.</span></h2>
     <div class="package-card reveal">
       <div class="package-badge">Full-service</div>
       <h3>Signature Package</h3>
@@ -13,9 +13,7 @@
         <li>On-Site Attendant — A friendly pro runs the booth from setup to breakdown.</li>
         <li>Setup & Breakdown Included — We handle it all, you don't lift a finger.</li>
       </ul>
-      <div class="package-btn">
-      <a href="#cta" class="btn-primary">Check Availablity</a>
-      </div>
+      <a href="#cta" class="package-btn">Check Availability</a>
     </div>
     <p class="addons-note">Want more? Ask about add-on services <br/>
     extra hours, raw photo copies, custom branding, custom prop packages, limited photo services or a stand-alone power source for outdoor events.</p>
@@ -64,13 +62,19 @@
     max-width: 560px; margin: 32px auto 0; opacity: 0.85;
   }
   .package-btn {
+    display: block;
     width: 100%; padding: 16px; margin-top: 8px;
     background: var(--gold); color: var(--cream);
     border: none; border-radius: 10px;
     font-size: 1.1rem; font-weight: 700; font-family: inherit;
+    text-decoration: none;
     cursor: pointer; transition: background .2s, transform .2s;
   }
   .package-btn:hover { background: #b8921e; transform: translateY(-2px); }
+  .package-btn:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+  }
 
   @media (max-width: 768px) {
     .package-card { padding: 32px 24px; }
