@@ -26,3 +26,6 @@ pnpm-debug.log*
 # agent files
 AGENTS.md
 CLAUDE.md
+
+# WCAG compliance
+WCAG_REPORT.md
