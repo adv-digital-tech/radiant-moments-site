@@ -15,5 +15,9 @@ const observer = new IntersectionObserver(
 );
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('revealed'));
+    return;
+  }
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 });

@@ -1,39 +1,46 @@
-<section class="cta" id="cta">
+<section class="cta" id="cta" aria-labelledby="cta-title">
   <div class="container">
-    <h2 class="cta-title reveal">Ready to Book Your Date?</h2>
+    <h2 class="cta-title reveal" id="cta-title">Ready to Book Your Date?</h2>
     <p class="cta-sub reveal">Weekend dates fill up fast for weddings and graduation season. Get your dates Availability today.</p>
     <form class="cta-form reveal" action="https://formsubmit.co/radiantmoments@protonmail.com" method="POST">
       <input type="hidden" name="_subject" value="New RadiantMoments Booking Inquiry" />
       <input type="hidden" name="_captcha" value="true" />
       <input type="hidden" name="_template" value="table" />
+      <p class="form-note" id="form-note">* Required field.</p>
       <div class="form-row">
         <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required />
+          <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="name" name="name" required autocomplete="name" aria-required="true" />
+          <span id="name-error" class="form-error" role="alert" hidden></span>
         </div>
         <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required />
+          <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
+          <input type="email" id="email" name="email" required autocomplete="email" aria-required="true" />
+          <span id="email-error" class="form-error" role="alert" hidden></span>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" minlength="10" maxlength="10" title="Please enter a valid 10-digit phone number" />
+          <label for="phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
+          <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" inputmode="numeric" aria-required="true" autocomplete="tel" aria-describedby="phone-hint phone-error" />
+          <span id="phone-hint" class="form-hint">Enter a 10-digit number, e.g. 8455550123.</span>
+          <span id="phone-error" class="form-error" role="alert" hidden></span>
         </div>
         <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" id="city" name="city" required />
+          <label for="city">City <span class="req" aria-hidden="true">*</span></label>
+          <input type="text" id="city" name="city" required aria-required="true" autocomplete="address-level2" />
+          <span id="city-error" class="form-error" role="alert" hidden></span>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
-          <label for="date">Event Date</label>
-          <input type="date" id="date" name="date" required />
+          <label for="date">Event Date <span class="req" aria-hidden="true">*</span></label>
+          <input type="date" id="date" name="date" required aria-required="true" aria-describedby="date-error" />
+          <span id="date-error" class="form-error" role="alert" hidden></span>
         </div>
         <div class="form-group">
-          <label for="type">Event Type</label>
-          <select id="type" name="type" required>
+          <label for="type">Event Type <span class="req" aria-hidden="true">*</span></label>
+          <select id="type" name="type" required aria-required="true" aria-describedby="type-error">
             <option value="">Select one...</option>
             <option value="birthday">Birthday</option>
             <option value="bar mitzvah">Bar mitzvah</option>
@@ -44,22 +51,190 @@
             <option value="corporate">Corporate</option>
             <option value="other">Other</option>
           </select>
+          <span id="type-error" class="form-error" role="alert" hidden></span>
         </div>
       </div>
       <button type="submit" class="btn-submit">Check Availability</button>
+      <span id="submit-status" class="form-status" role="status" aria-live="polite"></span>
+      <p class="form-error" id="form-error" role="alert" tabindex="-1" hidden></p>
       <p class="form-footnote">We'll follow up by email within 48 hours.</p>
     </form>
+  </div>
+
+  <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
+    <div class="modal-card">
+      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+          <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M16 24l6 6 10-10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h3 class="modal-title" id="modal-title">One step closer to picture-perfect memories!</h3>
+      <p class="modal-text" id="modal-desc">We've got your request! Our team is checking the calendar to make sure we can bring the booth to your big day.</p>
+      <p class="modal-text">We'll be in touch within 48hrs.</p>
+      <button class="modal-btn" id="modal-btn">Got it!</button>
+    </div>
   </div>
 </section>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const el = document.getElementById('date');
-    if (!el) return;
-    const today = new Date();
-    el.min = today.toISOString().split('T')[0];
-    const maxDate = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
-    el.max = maxDate.toISOString().split('T')[0];
+    const dateEl = document.getElementById('date');
+    if (dateEl) {
+      const today = new Date();
+      dateEl.min = today.toISOString().split('T')[0];
+      const maxDate = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
+      dateEl.max = maxDate.toISOString().split('T')[0];
+    }
+
+    const form = document.querySelector('.cta-form');
+    const modal = document.getElementById('success-modal');
+    const closeBtn = document.getElementById('modal-close');
+    const gotItBtn = document.getElementById('modal-btn');
+    const submitBtn = form?.querySelector('.btn-submit');
+
+    // Move the modal to the body so it sits OUTSIDE the content we inert on
+    // open. This keeps the modal (and its buttons) interactive.
+    if (modal && modal.parentElement !== document.body) {
+      document.body.appendChild(modal);
+    }
+    const supportsInert = 'inert' in HTMLElement.prototype;
+
+    function setBackgroundInert(active) {
+      for (const child of document.body.children) {
+        if (child === modal) continue;
+        if (supportsInert) {
+          child.inert = active;
+        } else {
+          child.setAttribute('aria-hidden', String(active));
+        }
+      }
+    }
+
+    function openModal() {
+      modal?.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      setBackgroundInert(true);
+      modal?.focus();
+    }
+
+    function closeModal() {
+      modal?.classList.remove('open');
+      document.body.style.overflow = '';
+      setBackgroundInert(false);
+      submitBtn?.focus();
+    }
+
+    closeBtn?.addEventListener('click', closeModal);
+    gotItBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    modal?.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('open') || e.key !== 'Tab') return;
+      const focusables = modal.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal?.classList.contains('open')) closeModal();
+    });
+
+    const formError = document.getElementById('form-error');
+    function showFormError(message) {
+      if (formError) {
+        formError.textContent = message;
+        formError.hidden = false;
+        formError.focus();
+      }
+    }
+    function clearFormError() {
+      if (formError) {
+        formError.textContent = '';
+        formError.hidden = true;
+      }
+    }
+    function markInvalid(field) {
+      const id = `${field.id}-error`;
+      const err = document.getElementById(id);
+      field.setAttribute('aria-invalid', 'true');
+      const message = field.validationMessage;
+      if (err) {
+        err.textContent = message;
+        err.hidden = false;
+      }
+    }
+    function clearValidation() {
+      form?.querySelectorAll('[aria-invalid]').forEach((el) => {
+        el.removeAttribute('aria-invalid');
+      });
+      form?.querySelectorAll('.form-error').forEach((el) => {
+        el.hidden = true;
+        el.textContent = '';
+      });
+    }
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!(e.target instanceof HTMLFormElement)) return;
+
+      clearValidation();
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        form.querySelectorAll('input, select').forEach((el) => {
+          if (!el.checkValidity() && el.willValidate) markInvalid(el);
+        });
+        return;
+      }
+
+      const originalText = submitBtn?.textContent;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+      }
+      const statusEl = document.getElementById('submit-status');
+      if (statusEl) statusEl.textContent = 'Sending your request...';
+
+      try {
+        const data = new FormData(e.target);
+        data.set('_captcha', 'false');
+
+        const res = await fetch(e.target.action, {
+          method: 'POST',
+          body: data,
+        });
+
+        if (!res.ok && res.type !== 'opaqueredirect') {
+          throw new Error('Submission failed');
+        }
+
+        e.target.reset();
+        clearFormError();
+        openModal();
+        dataLayer.push({'event': 'form_success'});
+      } catch {
+        showFormError('Something went wrong. Please try again or email us directly.');
+      } finally {
+        if (statusEl) statusEl.textContent = '';
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      }
+    });
   });
 </script>
 
@@ -92,7 +267,7 @@
   }
   .form-group input,
   .form-group select {
-    padding: 12px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,.15);
+    padding: 12px 16px; border-radius: 8px; border: 2px solid rgba(255,255,255,.15);
     background: rgba(255,255,255,.08); color: var(--cream);
     font-size: 1rem; font-family: inherit;
     transition: background .2s, border-color .2s;
@@ -111,10 +286,13 @@
     background-position: right 16px center;
     background-size: 12px 8px;
   }
-  .form-group input:focus,
+.form-group input:focus,
   .form-group select:focus {
-    outline: none; background: rgba(255,255,255,.14);
+    background: rgba(255,255,255,.14);
     border-color: var(--gold);
+    box-shadow: none;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
   }
   .form-group select option { color: var(--ink); }
   .btn-submit {
@@ -128,9 +306,114 @@
   .form-footnote {
     font-size: 0.85rem; opacity: .6; margin-top: 16px; text-align: center;
   }
+  .form-note {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .form-status {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .req { color: #ffd9a0; }
+  .form-hint {
+    font-size: 0.75rem; opacity: .7; line-height: 1.4;
+  }
+  .form-error {
+    font-size: 0.82rem; color: #ffe0d6; background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.25); border-radius: 8px;
+    padding: 10px 14px; margin-top: 6px; text-align: left;
+  }
+  .form-error[hidden] { display: none; }
+  .form-group .form-error { margin-top: 2px; }
+  .form-group input[aria-invalid="true"],
+  .form-group select[aria-invalid="true"] {
+    border-color: #ff8a70;
+    outline: 2px solid rgba(255,138,112,.6);
+  }
+
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 1000;
+    background: rgba(27,24,21,.7);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 0; pointer-events: none;
+    visibility: hidden;
+    transition: opacity .35s ease, visibility 0s linear .35s;
+  }
+  .modal-overlay.open {
+    opacity: 1; pointer-events: auto;
+    visibility: visible;
+    transition: opacity .35s ease;
+  }
+  .modal-card {
+    background: var(--cream);
+    border-radius: 20px;
+    padding: 48px 40px 40px;
+    max-width: 440px; width: 100%;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,.25);
+    transform: translateY(20px);
+    transition: transform .35s ease;
+  }
+  .modal-overlay.open .modal-card {
+    transform: translateY(0);
+  }
+  .modal-close {
+    position: absolute; top: 12px; right: 16px;
+    background: none; border: none;
+    font-size: 1.8rem; line-height: 1;
+    color: var(--slate); cursor: pointer;
+    opacity: .5; transition: opacity .2s;
+    font-family: inherit;
+  }
+  .modal-close:hover { opacity: 1; }
+  .modal-icon {
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .modal-title {
+    font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif;
+    font-size: 1.5rem; font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .modal-text {
+    font-size: 0.95rem;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+  .modal-btn {
+    margin-top: 20px;
+    padding: 12px 36px;
+    background: var(--gold);
+    color: var(--cream);
+    border: none; border-radius: 10px;
+    font-size: 1rem; font-weight: 700; font-family: inherit;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+  }
+  .modal-btn:hover {
+    background: #b8911f;
+    transform: translateY(-2px);
+  }
 
   @media (max-width: 768px) {
     .cta-title { font-size: 2rem; }
     .form-row { grid-template-columns: 1fr; }
+    .modal-card { padding: 40px 24px 32px; }
   }
 </style>

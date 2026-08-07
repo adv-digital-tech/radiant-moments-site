@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import galleryImg from '../assets/gallery-1.webp';
 ---
 
 <!doctype html>
@@ -7,16 +8,36 @@ import Header from '../components/Header.astro';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon-rm.ico" />
+    <link rel="preload" as="image" href={galleryImg.src} fetchpriority="high" />
     <meta name="generator" content={Astro.generator} />
-    <title>Radiant Moments. Photo Booth Rentals in Orange & Rockland County</title>
+    <meta name="description" content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
+    <!-- Google Tag Manager (deferred so the loader does not block first render) -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});})(window,document,'dataLayer','GTM-MR2437WJ');</script>
+    <script defer src="https://www.googletagmanager.com/gtm.js?id=GTM-MR2437WJ"></script>
+    <!-- End Google Tag Manager -->
+    <meta property="og:title" content="Radiant Moments Photo Booth Rentals in Orange & Rockland County" />
+    <meta property="og:description"content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
+    <meta property="og:image" content={`https://radiantmoments.nelify.app${galleryImg.src}`} />
+    <meta property="og:url" content="https://radiantmoments.nelify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <title>Radiant Moments | Photo Booth Rental in Orange & Rockland County</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
-  <body>
+  <body id="top">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR2437WJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <a class="skip-link" href="#main">Skip to content</a>
     <Header />
-    <slot />
+    <main id="main">
+      <slot />
+    </main>
   <script src="/scripts/scroll-reveal.js" is:inline></script>
   </body>
 </html>
@@ -25,35 +46,60 @@ import Header from '../components/Header.astro';
   :root {
     --ink: #1B1815;
     --gold: #C9A227;
+    --gold-deep: #c07614;
     --cream: #FFFFFF;
     --sand: #F5F3F0;
     --slate: #4A4A4A;
+    --header-h: 52px;
+  }
+  @media (max-width: 480px) {
+    :root { --header-h: 68px; }
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: calc(var(--header-h) + 12px); }
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 1001;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 12px 20px;
+    border-radius: 0 0 8px 8px;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    left: 24px;
+  }
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     color: var(--slate);
     background: var(--cream);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
-    padding-top: 52px;
+    padding-top: var(--header-h);
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px var(--cream);
+  }
   .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
   h1, h2, h3 { font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif; }
   h1 span, h2 span, h3 span { font-style: italic; }
-  .section-label {
-    text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem;
-    font-weight: 700; color: var(--gold); margin-bottom: 8px;
-  }
   .section-title {
     font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em;
     color: var(--ink); margin-bottom: 16px; text-align: center;
   }
   .section-title span {
-    background: linear-gradient(135deg, var(--gold), #e0b84c);
+    background: linear-gradient(135deg, var(--gold-deep), #e0b84c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -64,12 +110,30 @@ import Header from '../components/Header.astro';
   }
 
   .reveal {
-    opacity: 0;
-    transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  .reveal.revealed {
+  html.js .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+  }
+  html.js .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+    visibility: visible;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      scroll-behavior: auto !important;
+      transition-duration: .01ms !important;
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+    html.js .reveal {
+      opacity: 1;
+      transform: none;
+      visibility: visible;
+      transition: none;
+    }
   }
 </style>

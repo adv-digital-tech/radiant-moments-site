@@ -1,9 +1,10 @@
-<section class="testimonials" id="testimonials">
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
   <div class="container">
-    <h2 class="section-title reveal">Loved by Parents, <span>couples & planners alike</span></h2>
+    <h2 class="section-title reveal" id="testimonials-title">Loved by Parents, <span>couples & planners alike</span></h2>
     <div class="testimonials-grid">
       <div class="testimonial-card reveal">
-        <div class="stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+        <div class="stars" aria-hidden="true">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
+        <span class="visually-hidden">Rated 5 out of 5</span>
         <p class="testimonial-text">"Thank you both so much for setting up your photo booth at our daughters party. Everyone really enjoyed it and it's
             great to have all the memories sent after the party is over."</p>
         <p class="testimonial-author">— Pastor Dustin & Delassey</p>
@@ -25,6 +26,15 @@
     border: 1px solid #e8e4df;
   }
   .stars { font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    margin: -1px; padding: 0;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+  }
   .testimonial-text {
     font-size: 1rem; color: var(--ink); line-height: 1.7;
     font-style: italic; margin-bottom: 16px;
