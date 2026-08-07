@@ -8,16 +8,14 @@ import galleryImg from '../assets/gallery-1.webp';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon-rm.ico" />
+    <link rel="preload" as="image" href={galleryImg.src} fetchpriority="high" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MR2437WJ');</script>
+    <!-- Google Tag Manager (deferred so the loader does not block first render) -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});})(window,document,'dataLayer','GTM-MR2437WJ');</script>
+    <script defer src="https://www.googletagmanager.com/gtm.js?id=GTM-MR2437WJ"></script>
     <!-- End Google Tag Manager -->
     <meta property="og:title" content="Radiant Moments Photo Booth Rentals in Orange & Rockland County" />
     <meta property="og:description"content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
@@ -48,6 +46,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   :root {
     --ink: #1B1815;
     --gold: #C9A227;
+    --gold-deep: #c07614;
     --cream: #FFFFFF;
     --sand: #F5F3F0;
     --slate: #4A4A4A;
@@ -95,16 +94,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
   h1, h2, h3 { font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif; }
   h1 span, h2 span, h3 span { font-style: italic; }
-  .section-label {
-    text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.8rem;
-    font-weight: 700; color: var(--gold); margin-bottom: 8px;
-  }
   .section-title {
     font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em;
     color: var(--ink); margin-bottom: 16px; text-align: center;
   }
   .section-title span {
-    background: linear-gradient(135deg, var(--gold), #e0b84c);
+    background: linear-gradient(135deg, var(--gold-deep), #e0b84c);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
