@@ -1,11 +1,11 @@
 ---
-import img1 from '../assets/gallery-1.png';
-import img2 from '../assets/gallery-2.png';
-import img3 from '../assets/gallery-3.png';
-import img4 from '../assets/gallery-4.jpg';
-import img5 from '../assets/gallery-5.jpg';
-import img6 from '../assets/gallery-6.jpg';
-import img7 from '../assets/gallery-7.png';
+import img1 from '../assets/img/gallery-1-sm.webp';
+import img2 from '../assets/img/gallery-2-sm.webp';
+import img3 from '../assets/img/gallery-3-sm.webp';
+import img4 from '../assets/img/gallery-4-sm.webp';
+import img5 from '../assets/img/gallery-5-sm.webp';
+import img6 from '../assets/img/gallery-6-sm.webp';
+import img7 from '../assets/img/gallery-7-sm.webp';
 const images = [
   { src: img1.src, w: 44, h: 52, top: 2, left: -2, rotate: -4, radius: 28 },
   { src: img2.src, w: 38, h: 46, top: 4, left: 46, rotate: 5, radius: 24 },
@@ -18,7 +18,7 @@ const images = [
 ];
 ---
 
-<section class="how-it-works" id="how">
+<section class="how-it-works" id="how" aria-labelledby="how-title">
   <div class="how-collage">
     {images.map((img) => (
       <div
@@ -35,79 +35,28 @@ const images = [
   </div>
   <div class="how-fade" />
   <div class="container">
-    <h2 class="section-title reveal">Booking Is Simple</h2>
+    <h2 class="section-title reveal" id="how-title">Booking Is Simple</h2>
     <p class="section-sub reveal">Three steps between now and a party everyone talks about.</p>
-    <div class="steps">
-      <div class="step reveal" data-delay="0">
+    <ol class="steps">
+      <li class="step reveal" data-delay="0">
         <div class="step-num">1</div>
         <h3>Tell Us About Your Event</h3>
         <p>Fill out a quick form — event type, date, location and contact information.</p>
-      </div>
-      <div class="step reveal" data-delay="150">
+      </li>
+      <li class="step reveal" data-delay="150">
         <div class="step-num">2</div>
         <h3>We Confirm the Details</h3>
         <p>We'll call or email you back to lock in your package and answer questions.</p>
-      </div>
-      <div class="step reveal" data-delay="300">
+      </li>
+      <li class="step reveal" data-delay="300">
         <div class="step-num">3</div>
         <h3>We Show Up & Set Up</h3>
         <p>Our attendant arrives early, sets up, and handles everything start to finish.</p>
-      </div>
-    </div>
+      </li>
+    </ol>
   </div>
 </section>
 
-<style>
-  .how-it-works {
-    padding: 100px 0;
-    position: relative;
-    overflow: hidden;
-    background: var(--cream);
-    background-size: cover;
-    background-position: center;
-    min-height: 600px;
-  }
-  .how-collage {
-    position: absolute; inset: 0;
-    z-index: 0;
-    opacity: 0.2;
-  }
-  .how-cell {
-    position: absolute;
-    background-size: cover;
-    background-position: center;
-    filter: grayscale(0.2) contrast(1.05) brightness(0.9);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-  }
-  .how-fade {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, var(--cream) 0%, rgba(255,255,255,0.45) 25%, rgba(255,255,255,0.45) 75%, var(--cream) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
-  .how-it-works > .container { position: relative; z-index: 2; }
-  .steps {
-    display: flex; gap: 24px; margin-top: 56px;
-  }
-  .step { flex: 1; text-align: center; 
-    background: var(--sand);
-    border: 1px solid #e8e4df;
-    border-radius: 16px;
-    padding: 36px 28px;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .step:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
-  .step-num {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--gold); color: var(--cream);
-    font-size: 1.4rem; font-weight: 800;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-  }
-  .step h3 { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
-  .step p { color: var(--slate); font-size: 0.92rem; line-height: 1.6; }
-
-  @media (max-width: 768px) {
-    .steps { flex-direction: column; gap: 24px; }
-  }
+<style lang="scss">
+  @use '../assets/CSS/03–components/HowItWorks.scss';
 </style>
