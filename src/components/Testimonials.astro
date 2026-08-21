@@ -14,37 +14,6 @@
   </div>
 </section>
 
-<style>
-  .testimonials { padding: 100px 0; background: var(--cream); }
-  .testimonials-grid {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 32px;
-    margin-top: 56px;
-  }
-  .testimonial-card {
-    flex: 1 1 400px; max-width: 540px;
-    background: var(--sand); border-radius: 16px; padding: 36px 32px;
-    border: 1px solid #e8e4df;
-  }
-  .stars { font-size: 1.1rem; margin-bottom: 16px; letter-spacing: 2px; }
-  .visually-hidden {
-    position: absolute;
-    width: 1px; height: 1px;
-    margin: -1px; padding: 0;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
-    border: 0;
-  }
-  .testimonial-text {
-    font-size: 1rem; color: var(--ink); line-height: 1.7;
-    font-style: italic; margin-bottom: 16px;
-  }
-  .testimonial-author {
-    font-size: 0.9rem; color: var(--slate); font-weight: 500;
-  }
-
-  @media (max-width: 768px) {
-    .testimonials-grid { flex-direction: column; align-items: center; }
-    .testimonial-card { flex: none; width: 100%; max-width: 100%; }
-  }
+<style lang="scss">
+  @use '../assets/CSS/03 – components/Testimonials.scss';
 </style>

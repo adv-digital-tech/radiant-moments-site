@@ -29,28 +29,6 @@
   </div>
 </section>
 
-<style>
-  .benefits { padding: 100px 0; }
-  .benefits-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-    margin-top: 56px;
-  }
-  .benefit-card {
-    background: var(--sand); border-radius: 16px; padding: 32px 28px;
-    border: 1px solid #e8e4df;
-    transition: transform .2s, box-shadow .2s;
-  }
-  .benefit-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
-  .benefit-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--gold-deep); background: #f5f0e0;
-    margin-bottom: 20px;
-  }
-  .benefit-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
-  .benefit-card p { color: var(--slate); font-size: 0.95rem; line-height: 1.7; }
-
-  @media (max-width: 768px) {
-    .benefits-grid { grid-template-columns: 1fr; }
-  }
+<style lang="scss">
+  @use '../assets/CSS/03 – components/Benefits.scss';
 </style>
