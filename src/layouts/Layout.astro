@@ -50,13 +50,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     --cream: #FFFFFF;
     --sand: #F5F3F0;
     --slate: #4A4A4A;
-    --header-h: 52px;
-  }
-  @media (max-width: 480px) {
-    :root { --header-h: 68px; }
+    --header-h: 60px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
   [id] { scroll-margin-top: calc(var(--header-h) + 12px); }
   .skip-link {
     position: absolute;
@@ -80,7 +77,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     -webkit-font-smoothing: antialiased;
   }
   main {
-    margin-top: 4.06rem;
+    margin-top: 60px;
   }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }

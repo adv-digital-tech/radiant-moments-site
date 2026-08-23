@@ -2,15 +2,154 @@
 import logo from '../assets/img/radiant-moment-logo.png';
 ---
 
-<header>
+<header class="site-header" id="site-header">
   <nav class="header-inner" aria-label="Primary">
     <a href="#top" class="header-logo">
       <img src={logo.src} alt="" class="header-icon" />
       <span class="header-brand"><span class="brand-gold">Radiant </span><span class="brand-ink">Moments</span></span>
     </a>
-    <a href="#cta" class="header-cta">Check Availability</a>
+
+    <ul class="header-nav" id="header-nav" role="list">
+      <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+      <li><a href="#pricing" class="nav-link">Pricing</a></li>
+      <li><a href="#reviews" class="nav-link">Reviews</a></li>
+      <li><a href="#booking-form" class="nav-link">Book Now</a></li>
+    </ul>
+
+    <div class="header-actions">
+      <a href="#booking-form" class="header-cta">Check Availability</a>
+      <button
+        class="header-toggle"
+        id="header-toggle"
+        aria-expanded="false"
+        aria-controls="header-nav"
+        aria-label="Toggle navigation menu"
+        type="button"
+      >
+        <span class="hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
   </nav>
+  <div class="nav-overlay" id="nav-overlay" hidden></div>
 </header>
+
+<script is:inline>
+  (() => {
+    const header = document.getElementById('site-header');
+    const nav = document.getElementById('header-nav');
+    const toggle = document.getElementById('header-toggle');
+    const overlay = document.getElementById('nav-overlay');
+    const navLinks = nav ? Array.from(nav.querySelectorAll('.nav-link')) : [];
+
+    // Scroll blur effect - add class when scrolled
+    const onScroll = () => {
+      if (!header) return;
+      if (window.scrollY > 8) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Hamburger toggle
+    function setMenu(open) {
+      if (!nav || !toggle) return;
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.classList.toggle('is-open', open);
+      if (overlay) {
+        overlay.hidden = !open;
+        overlay.classList.toggle('is-visible', open);
+      }
+      document.body.style.overflow = open ? 'hidden' : '';
+      if (open) {
+        const firstLink = nav.querySelector('a');
+        if (firstLink) firstLink.focus();
+      }
+    }
+
+    toggle?.addEventListener('click', () => {
+      const isOpen = nav?.classList.contains('is-open');
+      setMenu(!isOpen);
+    });
+
+    overlay?.addEventListener('click', () => setMenu(false));
+
+    // Close drawer when clicking a nav link (also CTA)
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+    document.querySelector('.header-cta')?.addEventListener('click', () => setMenu(false));
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav?.classList.contains('is-open')) {
+        setMenu(false);
+        toggle?.focus();
+      }
+    });
+
+    // Close drawer on resize above 768px
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && nav?.classList.contains('is-open')) {
+        setMenu(false);
+      }
+    });
+
+    // Active state via Intersection Observer
+    const sections = ['how-it-works', 'pricing', 'reviews', 'booking-form']
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+
+    const linkMap = new Map();
+    navLinks.forEach((link) => {
+      const href = link.getAttribute('href');
+      if (href) linkMap.set(href.replace('#', ''), link);
+    });
+
+    if ('IntersectionObserver' in window && sections.length) {
+      let activeId = null;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          // Find the most visible intersecting entry
+          let bestEntry = null;
+          let bestRatio = 0;
+          entries.forEach((entry) => {
+            if (entry.isIntersecting && entry.intersectionRatio > bestRatio) {
+              bestRatio = entry.intersectionRatio;
+              bestEntry = entry;
+            }
+          });
+          // Fallback: if scrolling near top, clear active
+          // Prefer entry closest to top when multiple intersect
+          if (bestEntry) {
+            const id = bestEntry.target.id;
+            if (id !== activeId) {
+              activeId = id;
+              navLinks.forEach((l) => l.classList.remove('is-active'));
+              const activeLink = linkMap.get(id);
+              if (activeLink) activeLink.classList.add('is-active');
+            }
+          } else {
+            // If no section is intersecting substantially and we're at top, clear
+            if (window.scrollY < 200) {
+              navLinks.forEach((l) => l.classList.remove('is-active'));
+              activeId = null;
+            }
+          }
+        },
+        {
+          root: null,
+          rootMargin: '-50% 0px -50% 0px',
+          threshold: [0, 0.25, 0.5, 0.75, 1],
+        }
+      );
+      sections.forEach((s) => observer.observe(s));
+    }
+  })();
+</script>
 
 <style lang="scss">
   @use '../assets/CSS/02–layouts/Header.scss';
