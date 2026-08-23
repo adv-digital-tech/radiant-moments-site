@@ -1,80 +1,186 @@
-<section class="cta" id="booking-form" aria-labelledby="cta-title">
-  <span id="cta" aria-hidden="true" style="position:absolute;top:0;"></span>
-  <div class="container">
-    <h2 class="cta-title reveal" id="cta-title">Ready to Book Your Date?</h2>
-    <p class="cta-sub reveal">Weekend dates fill up fast for weddings and graduation season. Get your dates Availability today.</p>
-    <form class="cta-form reveal" action="https://formsubmit.co/radiantmoments@protonmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New RadiantMoments Booking Inquiry" />
-      <input type="hidden" name="_captcha" value="true" />
-      <input type="hidden" name="_template" value="table" />
-      <p class="form-note" id="form-note">* Required field.</p>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Full Name <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="name" name="name" required autocomplete="name" aria-required="true" />
-          <span id="name-error" class="form-error" role="alert" hidden></span>
+<section class='cta' id='booking-form' aria-labelledby='cta-title'>
+  <span id='cta' aria-hidden='true' style='position:absolute;top:0;'></span>
+  <div class='container'>
+    <h2 class='cta-title reveal' id='cta-title'>Ready to Book Your Date?</h2>
+    <p class='cta-sub reveal'>
+      Weekend dates fill up fast for weddings and graduation season. Get your
+      dates Availability today.
+    </p>
+    <form
+      class='cta-form reveal'
+      action='https://formsubmit.co/radiantmoments@protonmail.me'
+      method='POST'
+    >
+      <input
+        type='hidden'
+        name='_subject'
+        value='New RadiantMoments Booking Inquiry'
+      />
+      <input type='hidden' name='_captcha' value='true' />
+      <input type='hidden' name='_template' value='table' />
+      <p class='form-note' id='form-note'>* Required field.</p>
+      <div class='form-row'>
+        <div class='form-group'>
+          <label for='name'
+            >Full Name <span class='req' aria-hidden='true'>*</span></label
+          >
+          <input
+            type='text'
+            id='name'
+            name='name'
+            required
+            autocomplete='name'
+            aria-required='true'
+          />
+          <span id='name-error' class='form-error' role='alert' hidden></span>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
-          <input type="email" id="email" name="email" required autocomplete="email" aria-required="true" />
-          <span id="email-error" class="form-error" role="alert" hidden></span>
+        <div class='form-group'>
+          <label for='email'
+            >Email Address <span class='req' aria-hidden='true'>*</span></label
+          >
+          <input
+            type='email'
+            id='email'
+            name='email'
+            required
+            autocomplete='email'
+            aria-required='true'
+          />
+          <span id='email-error' class='form-error' role='alert' hidden></span>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="phone">Phone Number <span class="req" aria-hidden="true">*</span></label>
-          <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}" inputmode="numeric" aria-required="true" autocomplete="tel" aria-describedby="phone-hint phone-error" />
-          <span id="phone-hint" class="form-hint">Enter a 10-digit number, e.g. 8455550123.</span>
-          <span id="phone-error" class="form-error" role="alert" hidden></span>
+      <div class='form-row'>
+        <div class='form-group'>
+          <label for='phone'
+            >Phone Number <span class='req' aria-hidden='true'>*</span></label
+          >
+          <input
+            type='tel'
+            id='phone'
+            name='phone'
+            required
+            pattern='[0-9]{10}'
+            inputmode='numeric'
+            aria-required='true'
+            autocomplete='tel'
+            aria-describedby='phone-hint phone-error'
+          />
+          <span id='phone-hint' class='form-hint'
+            >Enter a 10-digit number, e.g. 8455550123.</span
+          >
+          <span id='phone-error' class='form-error' role='alert' hidden></span>
         </div>
-        <div class="form-group">
-          <label for="city">City <span class="req" aria-hidden="true">*</span></label>
-          <input type="text" id="city" name="city" required aria-required="true" autocomplete="address-level2" />
-          <span id="city-error" class="form-error" role="alert" hidden></span>
+        <div class='form-group'>
+          <label for='city'
+            >City <span class='req' aria-hidden='true'>*</span></label
+          >
+          <input
+            type='text'
+            id='city'
+            name='city'
+            required
+            aria-required='true'
+            autocomplete='address-level2'
+          />
+          <span id='city-error' class='form-error' role='alert' hidden></span>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="date">Event Date <span class="req" aria-hidden="true">*</span></label>
-          <input type="date" id="date" name="date" required aria-required="true" aria-describedby="date-error" />
-          <span id="date-error" class="form-error" role="alert" hidden></span>
+      <div class='form-row'>
+        <div class='form-group'>
+          <label for='date'
+            >Event Date <span class='req' aria-hidden='true'>*</span></label
+          >
+          <input
+            type='date'
+            id='date'
+            name='date'
+            required
+            aria-required='true'
+            aria-describedby='date-error'
+          />
+          <span id='date-error' class='form-error' role='alert' hidden></span>
         </div>
-        <div class="form-group">
-          <label for="type">Event Type <span class="req" aria-hidden="true">*</span></label>
-          <select id="type" name="type" required aria-required="true" aria-describedby="type-error">
-            <option value="">Select one...</option>
-            <option value="birthday">Birthday</option>
-            <option value="bar mitzvah">Bar mitzvah</option>
-            <option value="graduation">Graduation</option>
-            <option value="wedding">Wedding</option>
-            <option value="anniversary">Anniversary</option>
-            <option value="church">Church Event</option>
-            <option value="corporate">Corporate</option>
-            <option value="other">Other</option>
+        <div class='form-group'>
+          <label for='type'
+            >Event Type <span class='req' aria-hidden='true'>*</span></label
+          >
+          <select
+            id='type'
+            name='type'
+            required
+            aria-required='true'
+            aria-describedby='type-error'
+          >
+            <option value=''>Select one...</option>
+            <option value='birthday'>Birthday</option>
+            <option value='bar mitzvah'>Bar mitzvah</option>
+            <option value='graduation'>Graduation</option>
+            <option value='wedding'>Wedding</option>
+            <option value='anniversary'>Anniversary</option>
+            <option value='church'>Church Event</option>
+            <option value='corporate'>Corporate</option>
+            <option value='other'>Other</option>
           </select>
-          <span id="type-error" class="form-error" role="alert" hidden></span>
+          <span id='type-error' class='form-error' role='alert' hidden></span>
         </div>
       </div>
-      <button type="submit" class="btn-submit">Check Availability</button>
-      <span id="submit-status" class="form-status" role="status" aria-live="polite"></span>
-      <p class="form-error" id="form-error" role="alert" tabindex="-1" hidden></p>
-      <p class="form-footnote">We'll follow up by email within 48 hours.</p>
+      <button type='submit' class='btn-submit'>Check Availability</button>
+      <span
+        id='submit-status'
+        class='form-status'
+        role='status'
+        aria-live='polite'></span>
+      <p class='form-error' id='form-error' role='alert' tabindex='-1' hidden>
+      </p>
+      <p class='form-footnote'>We'll follow up by email within 48 hours.</p>
     </form>
   </div>
 
-  <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
-    <div class="modal-card">
-      <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
-      <div class="modal-icon">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
-          <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-          <path d="M16 24l6 6 10-10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <div
+    class='modal-overlay'
+    id='success-modal'
+    role='dialog'
+    aria-modal='true'
+    aria-labelledby='modal-title'
+    aria-describedby='modal-desc'
+    tabindex='-1'
+  >
+    <div class='modal-card'>
+      <button class='modal-close' id='modal-close' aria-label='Close'
+        >&times;</button
+      >
+      <div class='modal-icon'>
+        <svg
+          width='48'
+          height='48'
+          viewBox='0 0 48 48'
+          fill='none'
+          aria-hidden='true'
+          focusable='false'
+        >
+          <circle
+            cx='24'
+            cy='24'
+            r='22'
+            stroke='currentColor'
+            stroke-width='2.5'></circle>
+          <path
+            d='M16 24l6 6 10-10'
+            stroke='currentColor'
+            stroke-width='2.5'
+            stroke-linecap='round'
+            stroke-linejoin='round'></path>
         </svg>
       </div>
-      <h3 class="modal-title" id="modal-title">One step closer to picture-perfect memories!</h3>
-      <p class="modal-text" id="modal-desc">We've got your request! Our team is checking the calendar to make sure we can bring the booth to your big day.</p>
-      <p class="modal-text">We'll be in touch within 48hrs.</p>
-      <button class="modal-btn" id="modal-btn">Got it!</button>
+      <h3 class='modal-title' id='modal-title'>
+        One step closer to picture-perfect memories!
+      </h3>
+      <p class='modal-text' id='modal-desc'>
+        We've got your request! Our team is checking the calendar to make sure
+        we can bring the booth to your big day.
+      </p>
+      <p class='modal-text'>We'll be in touch within 48hrs.</p>
+      <button class='modal-btn' id='modal-btn'>Got it!</button>
     </div>
   </div>
 </section>
@@ -85,7 +191,11 @@
     if (dateEl) {
       const today = new Date();
       dateEl.min = today.toISOString().split('T')[0];
-      const maxDate = new Date(today.getFullYear() + 2, today.getMonth(), today.getDate());
+      const maxDate = new Date(
+        today.getFullYear() + 2,
+        today.getMonth(),
+        today.getDate(),
+      );
       dateEl.max = maxDate.toISOString().split('T')[0];
     }
 
@@ -129,14 +239,14 @@
 
     closeBtn?.addEventListener('click', closeModal);
     gotItBtn?.addEventListener('click', closeModal);
-    modal?.addEventListener('click', (e) => {
+    modal?.addEventListener('click', e => {
       if (e.target === modal) closeModal();
     });
 
-    modal?.addEventListener('keydown', (e) => {
+    modal?.addEventListener('keydown', e => {
       if (!modal.classList.contains('open') || e.key !== 'Tab') return;
       const focusables = modal.querySelectorAll(
-        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
       );
       if (focusables.length === 0) return;
       const first = focusables[0];
@@ -150,7 +260,7 @@
       }
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && modal?.classList.contains('open')) closeModal();
     });
 
@@ -179,23 +289,23 @@
       }
     }
     function clearValidation() {
-      form?.querySelectorAll('[aria-invalid]').forEach((el) => {
+      form?.querySelectorAll('[aria-invalid]').forEach(el => {
         el.removeAttribute('aria-invalid');
       });
-      form?.querySelectorAll('.form-error').forEach((el) => {
+      form?.querySelectorAll('.form-error').forEach(el => {
         el.hidden = true;
         el.textContent = '';
       });
     }
 
-    form?.addEventListener('submit', async (e) => {
+    form?.addEventListener('submit', async e => {
       e.preventDefault();
       if (!(e.target instanceof HTMLFormElement)) return;
 
       clearValidation();
       if (!form.checkValidity()) {
         form.reportValidity();
-        form.querySelectorAll('input, select').forEach((el) => {
+        form.querySelectorAll('input, select').forEach(el => {
           if (!el.checkValidity() && el.willValidate) markInvalid(el);
         });
         return;
@@ -225,9 +335,11 @@
         e.target.reset();
         clearFormError();
         openModal();
-        dataLayer.push({'event': 'form_success'});
+        dataLayer.push({ event: 'form_success' });
       } catch {
-        showFormError('Something went wrong. Please try again or email us directly.');
+        showFormError(
+          'Something went wrong. Please try again or email us directly.',
+        );
       } finally {
         if (statusEl) statusEl.textContent = '';
         if (submitBtn) {
@@ -239,6 +351,6 @@
   });
 </script>
 
-<style lang="scss">
+<style lang='scss'>
   @use '../assets/CSS/03–components/CTAForm.scss';
 </style>
