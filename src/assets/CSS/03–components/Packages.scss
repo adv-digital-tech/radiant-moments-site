@@ -89,7 +89,8 @@
     transform 0.2s;
 }
 .package-btn:hover {
-  background: #b8921e;
+  background: var(--gold-orange);
+  color: var(--ink);
   transform: translateY(-2px);
 }
 .package-btn:focus-visible {

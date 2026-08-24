@@ -2,11 +2,11 @@ footer {
   padding: 48px 0;
   text-align: center;
   background: var(--ink);
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--cream);
 }
 .footer-brand {
   margin-bottom: 12px;
-  color: var(--gold);
+  color: var(--gold-light);
   font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif;
   font-size: 1.4rem;
   font-weight: 800;
@@ -21,7 +21,7 @@ footer {
 }
 .footer-contact {
   margin-bottom: 8px;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--cream);
   font-size: 0.9rem;
 }
 .footer-link {
@@ -29,7 +29,7 @@ footer {
   text-decoration: none;
 }
 .footer-link:hover {
-  color: var(--gold);
+  color: var(--gold-light);
 }
 .footer-copy {
   font-size: 0.8rem;
@@ -51,14 +51,15 @@ footer > .container {
   justify-content: center;
   width: 44px;
   height: 44px;
-  color: var(--cream);
-  background: var(--gold);
+  color: var(--ink);
+  background: var(--gold-light);
   border-radius: 50%;
   transition:
     background 0.2s,
     transform 0.2s;
 }
 .back-to-top:hover {
-  background: #b8921e;
+  background: var(--gold-light);
   transform: translateY(-3px);
+  border: 3px solid var(--cream);
 }

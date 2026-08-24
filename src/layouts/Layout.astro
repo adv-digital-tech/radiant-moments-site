@@ -4,64 +4,96 @@ import galleryImg from '../assets/img/gallery-1.webp';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon-rm.ico" />
-    <link rel="preload" as="image" href={galleryImg.src} fetchpriority="high" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
+    <meta charset='utf-8' />
+    <meta name='viewport' content='width=device-width' />
+    <link rel='icon' href='/favicon-rm.ico' />
+    <link rel='preload' as='image' href={galleryImg.src} fetchpriority='high' />
+    <meta name='generator' content={Astro.generator} />
+    <meta
+      name='description'
+      content='Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now.'
+    />
     <!-- Google Tag Manager (deferred so the loader does not block first render) -->
-    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});})(window,document,'dataLayer','GTM-MR2437WJ');</script>
-    <script defer src="https://www.googletagmanager.com/gtm.js?id=GTM-MR2437WJ"></script>
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+      })(window, document, 'dataLayer', 'GTM-MR2437WJ');
+    </script>
+    <script defer src='https://www.googletagmanager.com/gtm.js?id=GTM-MR2437WJ'
+    ></script>
     <!-- End Google Tag Manager -->
-    <meta property="og:title" content="Radiant Moments Photo Booth Rentals in Orange & Rockland County" />
-    <meta property="og:description"content="Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now." />
-    <meta property="og:image" content={`https://radiantmoments.nelify.app${galleryImg.src}`} />
-    <meta property="og:url" content="https://radiantmoments.nelify.app" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="en_US" />
-    <title>Radiant Moments | Photo Booth Rental in Orange & Rockland County</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet" />
-    <script is:inline>document.documentElement.classList.add('js');</script>
+    <meta
+      property='og:title'
+      content='Radiant Moments Photo Booth Rentals in Orange & Rockland County'
+    />
+    <meta
+      property='og:description'
+      content='Open-air photo booth for weddings, birthdays & corporate events. Instant digital delivery, unlimited sessions. Full-service from $550. Book now.'
+    />
+    <meta
+      property='og:image'
+      content={`https://radiantmoments.nelify.app${galleryImg.src}`}
+    />
+    <meta property='og:url' content='https://radiantmoments.nelify.app' />
+    <meta property='og:type' content='website' />
+    <meta property='og:locale' content='en_US' />
+    <title>
+      Radiant Moments | Photo Booth Rental in Orange & Rockland County
+    </title>
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@700&display=swap'
+      rel='stylesheet'
+    />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
   </head>
-  <body id="top">
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MR2437WJ"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <a class="skip-link" href="#main">Skip to content</a>
+  <body id='top'>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src='https://www.googletagmanager.com/ns.html?id=GTM-MR2437WJ'
+        height='0'
+        width='0'
+        style='display:none;visibility:hidden'></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
+    <a class='skip-link' href='#main'>Skip to content</a>
     <Header />
-    <main id="main">
+    <main id='main'>
       <slot />
     </main>
-  <script src="/scripts/scroll-reveal.js" is:inline></script>
+    <script src='/scripts/scroll-reveal.js' is:inline></script>
   </body>
 </html>
 
-<style is:global>
-  :root {
-    --ink: #1B1815;
-    --gold: #C9A227;
-    --gold-deep: #c07614;
-    --cream: #FFFFFF;
-    --sand: #F5F3F0;
-    --slate: #4A4A4A;
-    --header-h: 60px;
+<style is:global lang='scss'>
+  @use '../assets/CSS/01–global/variables.scss' as *;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; scrollbar-gutter: stable; }
-  [id] { scroll-margin-top: calc(var(--header-h) + 12px); }
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+  [id] {
+    scroll-margin-top: calc(var(--header-h) + 12px);
+  }
   .skip-link {
     position: absolute;
     left: -9999px;
     top: 0;
     z-index: 1001;
     background: var(--gold);
-    color: var(--ink);
+    color: #181305;
     padding: 12px 20px;
     border-radius: 0 0 8px 8px;
     font-weight: 600;
@@ -70,7 +102,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     left: 24px;
   }
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family:
+      'Inter',
+      system-ui,
+      -apple-system,
+      sans-serif;
     color: var(--slate);
     background: var(--cream);
     line-height: 1.6;
@@ -79,8 +115,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   main {
     margin-top: 60px;
   }
-  a { color: inherit; text-decoration: none; }
-  img { max-width: 100%; display: block; }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  img {
+    max-width: 100%;
+    display: block;
+  }
   a:focus-visible,
   button:focus-visible,
   input:focus-visible,
@@ -90,26 +132,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     outline-offset: 2px;
     box-shadow: 0 0 0 5px var(--cream);
   }
-  .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
-  h1, h2, h3 { font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif; }
-  h1 span, h2 span, h3 span { font-style: italic; }
+  .container {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: 'Fraunces', 'Iowan Old Style', ui-serif, serif;
+  }
+  h1 span,
+  h2 span,
+  h3 span {
+    font-style: italic;
+  }
   .section-title {
-    font-size: 2.5rem; font-weight: 800; letter-spacing: -0.03em;
-    color: var(--ink); margin-bottom: 16px; text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 16px;
+    text-align: center;
   }
   .section-title span {
-    background: linear-gradient(135deg, var(--gold-deep), #e0b84c);
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-orange));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .section-sub {
-    color: var(--slate); max-width: 520px; font-size: 1.05rem;
-    text-align: center; margin: 0 auto;
+    color: var(--slate);
+    max-width: 520px;
+    font-size: 1.05rem;
+    text-align: center;
+    margin: 0 auto;
   }
 
   .reveal {
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
   }
   html.js .reveal {
     opacity: 0;
@@ -124,8 +187,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   @media (prefers-reduced-motion: reduce) {
     * {
       scroll-behavior: auto !important;
-      transition-duration: .01ms !important;
-      animation-duration: .01ms !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
     }
     html.js .reveal {

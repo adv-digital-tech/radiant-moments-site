@@ -28,7 +28,7 @@
   justify-content: center;
   width: 22px;
   height: 22px;
-  color: var(--gold-deep);
+  color: var(--gold-deeper);
 }
 .trust-content {
   display: flex;
@@ -36,7 +36,7 @@
   gap: 2px;
 }
 .trust-label {
-  color: #9d6010;
+  color: var(--gold-deeper);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;

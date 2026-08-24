@@ -54,7 +54,7 @@
   line-height: 1.1;
 }
 .hero h1 span {
-  background: linear-gradient(135deg, var(--gold), #e0b84c);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-orange));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -71,7 +71,7 @@
   font-size: 1.15rem;
 }
 .hero-price strong {
-  color: var(--gold);
+  color: var(--gold-light);
   font-weight: 700;
 }
 .hero-buttons {
@@ -85,8 +85,8 @@
   align-items: center;
   gap: 8px;
   padding: 14px 36px;
-  color: var(--ink);
-  background: var(--gold);
+  color: #181305;
+  background: var(--gold-light);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -97,7 +97,7 @@
     transform 0.2s;
 }
 .btn-primary:hover {
-  background: #b8921e;
+  background: var(--gold-orange);
   transform: translateY(-2px);
 }
 @media (max-width: 768px) {
